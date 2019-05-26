@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: TicketListComponent
   },
   {
-    path: 'tickets/:jokeId',
+    path: 'tickets/:id',
     component: TicketDetailComponent
   }
   // {

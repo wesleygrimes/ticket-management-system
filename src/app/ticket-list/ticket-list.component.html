@@ -1,4 +1,10 @@
 <div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="createTicket()">Create New</button>
+  </div>
+</div>
+<hr />
+<div class="row">
   <div class="col-6">
     <app-ticket-list-filter-form
       [currentFilter]="currentFilter$ | async"
@@ -12,7 +18,9 @@
     <app-ticket-list-grid
       [ticketsWithUsers]="ticketsWithUsers$ | async"
       [isLoading]="isLoading$ | async"
-      (selectTicket)="onSelectTicket($event)"
+      (view)="onViewTicket($event)"
+      (assign)="onAssignTicket($event)"
+      (complete)="onCompleteTicket($event)"
     ></app-ticket-list-grid>
   </div>
 </div>

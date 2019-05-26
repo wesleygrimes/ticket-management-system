@@ -18,6 +18,11 @@ export const selectTicketIsLoading = createSelector(
   (state: State): boolean => state.isLoading
 );
 
+export const selectTicketCurrentTicketId = createSelector(
+  selectTicketState,
+  (state: State): number => state.currentTicketId
+);
+
 export const selectTicketCurrentFilter = createSelector(
   selectTicketState,
   (state: State): TicketFilter => state.currentFilter
@@ -38,5 +43,13 @@ export const selectFilteredTicketItems = createSelector(
           currentFilter.completed === null ||
           item.completed === currentFilter.completed
       );
+  }
+);
+
+export const selectCurrentTicket = createSelector(
+  selectTicketCurrentTicketId,
+  selectAllTicketItems,
+  (currentTicketId: number, items: Ticket[]): Ticket => {
+    return items.find(i => i.id === currentTicketId);
   }
 );

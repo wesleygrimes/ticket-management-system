@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of as observableOf } from 'rxjs';
@@ -12,8 +11,7 @@ import * as featureActions from './actions';
 export class TicketStoreEffects {
   constructor(
     private actions$: Actions,
-    private ticketService: TicketService,
-    private router: Router
+    private ticketService: TicketService
   ) {}
 
   @Effect()
@@ -112,16 +110,6 @@ export class TicketStoreEffects {
           )
         )
       )
-    )
-  );
-
-  @Effect({ dispatch: false })
-  selectTicketEffect$ = this.actions$.pipe(
-    ofType<featureActions.SelectTicketAction>(
-      featureActions.ActionTypes.SELECT_TICKET
-    ),
-    map(action =>
-      this.router.navigate(['/tickets', action.payload.ticketId.toString()])
     )
   );
 }

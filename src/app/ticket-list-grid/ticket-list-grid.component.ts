@@ -10,7 +10,9 @@ export class TicketListGridComponent implements OnInit {
   @Input() ticketsWithUsers: TicketWithUser[];
   @Input() isLoading: boolean;
 
-  @Output() selectTicket = new EventEmitter<number>();
+  @Output() view = new EventEmitter<number>();
+  @Output() assign = new EventEmitter<number>();
+  @Output() complete = new EventEmitter<number>();
 
   constructor() {}
 

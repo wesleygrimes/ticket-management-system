@@ -3,7 +3,7 @@
 <table *ngIf="!isLoading" class="table">
   <thead class="thead-dark">
     <tr>
-      <th>Select</th>
+      <th></th>
       <th>Assignee</th>
       <th>Completed</th>
       <th>Description</th>
@@ -12,11 +12,18 @@
   <tbody>
     <tr *ngFor="let ticket of ticketsWithUsers">
       <td>
+        <button class="btn btn-secondary" (click)="view.emit(ticket.id)">
+          View
+        </button>
+        <button class="btn btn-secondary" (click)="assign.emit(ticket.id)">
+          Assign
+        </button>
         <button
           class="btn btn-secondary"
-          (click)="selectTicket.emit(ticket.id)"
+          *ngIf="!ticket.completed"
+          (click)="complete.emit(ticket.id)"
         >
-          Select Ticket
+          Mark Complete
         </button>
       </td>
       <td>{{ ticket.assigneeName }}</td>
