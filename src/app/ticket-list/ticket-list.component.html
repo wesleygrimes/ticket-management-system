@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-6">
+    <app-ticket-list-filter-form
+      [currentFilter]="currentFilter$ | async"
+      [users]="users$ | async"
+      (filter)="onFilterTickets($event)"
+    ></app-ticket-list-filter-form>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <app-ticket-list-grid
+      [ticketsWithUsers]="ticketsWithUsers$ | async"
+      [isLoading]="isLoading$ | async"
+      (selectTicket)="onSelectTicket($event)"
+    ></app-ticket-list-grid>
+  </div>
+</div>
